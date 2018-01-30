@@ -59,9 +59,9 @@ function mcAdd( first, second ){
 	else if( decimalfirst == true || decimalsecond == true ){
 		firstslice = (firstpos < 0)? 0 : first.slice( firstpos + 1 );
 		secondslice = (secondpos < 0)? 0 : second.slice( secondpos + 1 );
-		while( firstslice.length > secondslice.length )
+		while( firstslice.join( "" ).length > secondslice.join( "" ).length )
 			secondslice = secondslice.push( "0" );
-		while( secondslice.length > firstslice.length )
+		while( secondslice.join( "" ).length > firstslice.join( "" ).length )
 			firstslice = firstslice.push( "0" );
 
 		firsthalf = first.slice( 0, firstpos );
@@ -69,7 +69,10 @@ function mcAdd( first, second ){
 
 		firstslice = firstslice.join( "" );
 		secondslice = secondslice.join( "" );
-
+		firsthalf = firsthalf.join( "" );
+		secondhalf = secondhalf.join( "" );
+		
+		
 		thirdhalf = mcAdd( firsthalf, secondhalf );
 		thirdslice = mcAdd( firstslice, secondslice );
 
