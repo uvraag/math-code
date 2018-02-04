@@ -9,5 +9,10 @@ So, you use math-code.<br>
 Answer is 562973520797692522626735392913512166.37837283768937386
 ### Syntax of Addition
 `var solvedadd = mcAdd( value1[, value2[, .....[, valueN]]])`
+### Example
+```
+var addnumber = mcAdd( "5764356344", "928826387655566787654288265728" );
+```
+Use parameter in string type
 ### Return value of Addition
-Return **string** data type
+Return **string** type value
