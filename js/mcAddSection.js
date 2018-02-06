@@ -1,7 +1,5 @@
 function mcAddSection( first, second ){
-	var first,
-		second,
-		lengthno,
+	var lengthno,
 		i,
 		firstLastIndex, secondLastIndex,
 		firstnohold, secondnohold,
