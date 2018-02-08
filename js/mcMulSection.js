@@ -2,8 +2,7 @@ function mcMulSection( first, second ){
 	var lengthno,
 		i, j,
 		firstLastIndex, secondLastIndex,
-		firstnohold, secondnohold,
-		decimalfirst, decimalsecond,
+		decimalfirst, decimalsecond, decimalthirdno,
 		firstpos, secondpos,
 		firstslice, secondslice,
 		firsthalf, secondhalf,
@@ -45,60 +44,29 @@ function mcMulSection( first, second ){
 		return third;
 	}
 	else if( decimalfirst == true || decimalsecond == true ){
-		
-		if( decimalfirst == false ){
-			first = first.join( "" );
-			firstpos = first.length;
-			first = first.concat( ".0" );
-			first = first.split( "" );
-		} 
-		else if( decimalsecond == false ){
-			second = second.join( "" );
-			secondpos = second.length;
-			second = second.concat( ".0" );
-			second = second.split( "" );
-		}
-		firstslice = (firstpos < 0)? 0 : first.slice( firstpos + 1 );
-		secondslice = (secondpos < 0)? 0 : second.slice( secondpos + 1 );
-		while( firstslice.length > secondslice.length )
-			secondslice.push( "0" );
-		while( secondslice.length > firstslice.length )
-			firstslice.push( "0" );
-		
+
+		firstslice = first.slice( firstpos + 1 );
+		secondslice = second.slice( secondpos + 1 );
+
 		firsthalf = first.slice( 0, firstpos );
 		secondhalf = second.slice( 0, secondpos );
-		
-		firsthalf = firsthalf.join( "" );
-		secondhalf = secondhalf.join( "" );
-		firstslice = firstslice.join( "" );
-		secondslice = secondslice.join( "" );
-		
-		thirdhalf = mcAddSection( firsthalf, secondhalf );
-		thirdslice = mcAddSection( firstslice, secondslice );
-		
-		if( firstslice.length == secondslice.length &&
-			thirdslice.length == firstslice.length ){
-			
-			thirdslice = thirdslice.split( "" );
-			while( thirdslice[ thirdslice.length - 1 ] == 0 )
-				thirdslice.pop();
-			thirdslice = thirdslice.join( "" );
-			third = thirdhalf.concat( ".", thirdslice );
-			return third;
-		}
-		else if( firstslice.length == secondslice.length &&
-			thirdslice.length == firstslice.length + 1 ){
-			
-			thirdhalf = mcAddSection( thirdhalf, thirdslice.charAt( 0 ) );
-			thirdslice = thirdslice.split( "" );
-			thirdslice.shift();
-			while( thirdslice[ thirdslice.length - 1 ] == 0 )
-				thirdslice.pop();
-			thirdslice = thirdslice.join( "" );
-			
-			third = thirdhalf.concat( ".", thirdslice );
-			return third;
-		}
+		first = firsthalf.concat( firstslice );
+		second = secondhalf.concat( secondslice );
+
+		first = first.join( "" );
+		second = second.join( "" );
+
+		third = mcMulSection( first, second );
+
+		third = third.split( "" );
+		decimalthirdno = firstslice.length + secondslice.length;
+		third.splice( third.length - decimalthirdno, 0, ".");
+		while( third[ third.length - 1 ] == 0 )
+			third.pop();
+		if( third[ third.length - 1 ] == "." )
+			third.pop();
+		third = third.join( "" );
+		return third;
 	}
 	return "Something went wrong";
 }
