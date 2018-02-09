@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Uvraag">
+    <meta charset="UTF-8">
+	<script src="../js/mcAddSection.js"></script>
+	<script src="../js/mcAdd.js"></script>
+	<script src="../js/mcMulOne.js"></script>
+	<script src="../js/mcMulSection.js"></script>
+	<script src="../js/mcMul.js"></script>
+	<script src="../js/mcPow.js"></script>
+</head>
+<body>
+    <p>Enter Value</p>
+	<input type="text" id="in1" value="" autofocus>
+	<input type="text" id="in2" value="">
+	<input type="button" value="Click" onclick="start()">	<p id="show" style="font-size:50px"></p>
+
+<script>
+function start(){
+    var temp = mcPow( document.getElementById( "in1" ).value, document.getElementById( "in2" ).value );
+document.getElementById( "show" ).innerHTML = temp;
+}
+</script>
+</body>
+</html>
