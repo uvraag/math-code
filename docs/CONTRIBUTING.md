@@ -3,16 +3,16 @@
 I'm really glad you're reading this, because we need volunteer developers to help this project come to fruition.
 
 ### Table of content
-- Do not
-- Addition or mcAdd()
-    - mcAddSection()
+- [Do not](#do-not)
+- Addition or [mcAdd()](#addition)
+    - mcAddSection()
 - Multiplication or mcMul()
-    - mcMulOne()
+    - mcMulOne()
     - mcMulSection()
 
 ## Do Not
 
-Please do not edit math-code.js file I am regular up to date this file.
+Please do not edit [math-code.js](https://github.com/uvraag/math-code/blob/master/js/math-code.js) file I am regular up to date this file.
 
 ## Addition
 
