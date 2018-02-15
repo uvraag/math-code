@@ -46,8 +46,8 @@ function mcSubSection( first, second ){
 		}
 		else if ( first.length == second.length ) {
 			for ( i = 0, lengthno = first.length; i < lengthno; i++) {
-				if ( similar == true ) {
-					return 0;
+				if ( first[ i ] == second[ i ] ) {
+					similar = true;
 				}
 				else if ( first[ i ] > second[ i ] ) {
 					return mcSubSolve( first.join( "" ), second.join( "" ) );
@@ -59,6 +59,9 @@ function mcSubSection( first, second ){
 					third = third.join( "" );
 					return third;
 				}
+			 }
+			if ( similar == true ) {
+				return 0;
 			}
 		}
 	}

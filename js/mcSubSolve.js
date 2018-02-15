@@ -18,7 +18,17 @@ function mcSubSolve( first, second ){
 	for( i = 0, lengthno = first.length; i < lengthno; i++, firstLastIndex--, secondLastIndex--){
 		firstnohold = (firstLastIndex < 0)? 0 : Number( first[ firstLastIndex ] );
 		secondnohold = (secondLastIndex < 0)? 0 : Number( second[ secondLastIndex ] );
-		third[i] = firstnohold - secondnohold;
+		if ( secondnohold > firstnohold ) {
+			firstnohold = String( firstnohold );
+			firstnohold = firstnohold.split( "" );
+			firstnohold.unshift( "1" );
+			firstnohold = firstnohold.join( "" );
+			third[ i ] = Number(  firstnohold ) - secondnohold;
+			first[ firstLastIndex - 1 ] = Number( first[ firstLastIndex - 1 ] ) - 1;
+		}
+		else {
+			third[i] = firstnohold - secondnohold;
+		}
 	}
 	third = third.reverse();
 	third = third.join( "" );
