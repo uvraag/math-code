@@ -3,7 +3,7 @@ function mcSubSection( first, second ){
 		i, similar,
 		firstLastIndex, secondLastIndex,
 		firstnohold, secondnohold,
-		decimalfirst, decimalsecond,
+		decimalfirst, decimalsecond, decimalthirdno,
 		firstpos, secondpos,
 		firstslice, secondslice,
 		firsthalf, secondhalf,
@@ -66,7 +66,6 @@ function mcSubSection( first, second ){
 		}
 	}
 	else if( decimalfirst == true || decimalsecond == true ){
-
 		if( decimalfirst == false ){
 			first = first.join( "" );
 			firstpos = first.length;
@@ -89,36 +88,22 @@ function mcSubSection( first, second ){
 		firsthalf = first.slice( 0, firstpos );
 		secondhalf = second.slice( 0, secondpos );
 
-		firsthalf = firsthalf.join( "" );
-		secondhalf = secondhalf.join( "" );
-		firstslice = firstslice.join( "" );
-		secondslice = secondslice.join( "" );
+		first = firsthalf.concat( firstslice );
+		second = secondhalf.concat( secondslice );
 
-		thirdhalf = mcAddSection( firsthalf, secondhalf );
-		thirdslice = mcAddSection( firstslice, secondslice );
+		third = mcSubSection( first.join( "" ), second.join( "" ) );
+		third = third.split( "" );
+		decimalthirdno = firstslice.length;
+		third.splice( third.length - decimalthirdno, 0, "." );
 
-		if( firstslice.length == secondslice.length &&
-			thirdslice.length == firstslice.length ){
-
-			thirdslice = thirdslice.split( "" );
-			while( thirdslice[ thirdslice.length - 1 ] == 0 )
-				thirdslice.pop();
-			thirdslice = thirdslice.join( "" );
-			third = thirdhalf.concat( ".", thirdslice );
-			return third;
+		while ( third[ third.length - 1 ] == 0 ) {
+			third.pop();
 		}
-		else if( firstslice.length == secondslice.length &&
-			thirdslice.length == firstslice.length + 1 ){
-
-			thirdhalf = mcAddSection( thirdhalf, thirdslice.charAt( 0 ) );
-			thirdslice = thirdslice.split( "" );
-			thirdslice.shift();
-			while( thirdslice[ thirdslice.length - 1 ] == 0 )
-				thirdslice.pop();
-			thirdslice = thirdslice.join( "" );
-
-			third = thirdhalf.concat( ".", thirdslice );
-			return third;
+		if ( third[ third.length - 1 ] == 0 ) {
+			third.pop();
+		}
+		third = third.join( "" );
+		return third;
 		}
 	}
 	return "Something went wrong";
