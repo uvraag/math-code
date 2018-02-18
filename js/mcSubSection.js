@@ -99,12 +99,12 @@ function mcSubSection( first, second ){
 		while ( third[ third.length - 1 ] == 0 ) {
 			third.pop();
 		}
-		if ( third[ third.length - 1 ] == 0 ) {
+		if ( third[ third.length - 1 ] == "." ) {
 			third.pop();
 		}
 		third = third.join( "" );
 		return third;
-		}
+		
 	}
 	return "Something went wrong";
 }
