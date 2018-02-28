@@ -31,3 +31,21 @@ var addnumber = mcAdd( "3742842342342384234234", "654887877232312342434234234234
 Use parameter in string type
 ### Return value of Addition
 Return **string** type value
+
+## Multiplication
+
+### Syntax of Multiplication
+```
+var solvedadd = mcMul( value1[, value2[, .....[, valueN]]])
+```
+### Example
+```javascript
+var addnumber = mcMul( "3742842342342384234234", "6548878772323123424342342342342342342346677676.3438478374834" );
+```
+### Output
+```
+2451142076391819690187201897490752479954386594050403007383396773173.79995658808890150808365707906867156
+```
+Use parameter in string type
+### Return value of Multiplication
+Return **string** type value
