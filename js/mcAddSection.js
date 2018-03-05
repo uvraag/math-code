@@ -32,20 +32,20 @@ function mcAddSection( first, second ){
 			secondpos = i;
 			break;
 		}
-	if( decimalfirst == false && decimalsecond == false ){
+	if( decimalfirst == false && decimalsecond == false ) {
 		if( first.length > second.length )
 			lengthno = first.length;
 		else
 			lengthno = second.length;
 		firstLastIndex = first.length - 1;
 		secondLastIndex = second.length - 1;
-		for( i = 0; i < lengthno; i++, firstLastIndex--, secondLastIndex--){
+		for( i = 0; i < lengthno; i++, firstLastIndex--, secondLastIndex--) {
 			firstnohold = (firstLastIndex < 0)? 0 : Number( first[ firstLastIndex ] );
 			secondnohold = (secondLastIndex < 0)? 0 : Number( second[ secondLastIndex ] );
 			third[i] = (isNaN( third[i] ))? 0 : third[i];
 			third[i] = Number( third[i] ) + firstnohold + secondnohold;
 			third[i] = String( third[i] );
-			if( third[i].length == 2 ){
+			if( third[i].length == 2 ) {
 				third[ i + 1 ] = third[i].charAt( 0 );
 				third[ i ] = third[i].charAt( 1 );
 			}
@@ -54,15 +54,15 @@ function mcAddSection( first, second ){
 		third = third.join( "" );
 		return third;
 	}
-	else if( decimalfirst == true || decimalsecond == true ){
-		
-		if( decimalfirst == false ){
+	else if( decimalfirst == true || decimalsecond == true ) {
+
+		if( decimalfirst == false ) {
 			first = first.join( "" );
 			firstpos = first.length;
 			first = first.concat( ".0" );
 			first = first.split( "" );
-		} 
-		else if( decimalsecond == false ){
+		}
+		else if( decimalsecond == false ) {
 			second = second.join( "" );
 			secondpos = second.length;
 			second = second.concat( ".0" );
@@ -74,23 +74,23 @@ function mcAddSection( first, second ){
 			secondslice.push( "0" );
 		while( secondslice.length > firstslice.length )
 			firstslice.push( "0" );
-		
+
 		firsthalf = first.slice( 0, firstpos );
 		secondhalf = second.slice( 0, secondpos );
-		
+
 		firsthalf = firsthalf.join( "" );
 		secondhalf = secondhalf.join( "" );
 		firstslice = firstslice.join( "" );
 		secondslice = secondslice.join( "" );
-		
+
 		thirdhalf = mcAddSection( firsthalf, secondhalf );
 		thirdslice = mcAddSection( firstslice, secondslice );
-		
+
 		if( firstslice.length == secondslice.length &&
-			thirdslice.length == firstslice.length ){
-			
+			thirdslice.length == firstslice.length ) {
+
 			thirdslice = thirdslice.split( "" );
-			while( thirdslice[ thirdslice.length - 1 ] == 0 )
+			while( thirdslice[thirdslice.length - 1] == 0 )
 				thirdslice.pop();
 			thirdslice = thirdslice.join( "" );
 			third = thirdhalf.concat( ".", thirdslice );
@@ -98,14 +98,14 @@ function mcAddSection( first, second ){
 		}
 		else if( firstslice.length == secondslice.length &&
 			thirdslice.length == firstslice.length + 1 ){
-			
+
 			thirdhalf = mcAddSection( thirdhalf, thirdslice.charAt( 0 ) );
 			thirdslice = thirdslice.split( "" );
 			thirdslice.shift();
-			while( thirdslice[ thirdslice.length - 1 ] == 0 )
+			while( thirdslice[thirdslice.length - 1] == 0 )
 				thirdslice.pop();
 			thirdslice = thirdslice.join( "" );
-			
+
 			third = thirdhalf.concat( ".", thirdslice );
 			return third;
 		}
