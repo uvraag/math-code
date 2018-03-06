@@ -4,6 +4,7 @@ function mcAddSection( first, second ){
 		firstLastIndex, secondLastIndex,
 		firstnohold, secondnohold,
 		decimalfirst, decimalsecond,
+	        negativefirst, negativesecond,
 		firstpos, secondpos,
 		firstslice, secondslice,
 		firsthalf, secondhalf,
@@ -20,6 +21,7 @@ function mcAddSection( first, second ){
 		first.shift();
 	while( Number( second[0] )== 0 )
 		second.shift();
+	
 	for( i = 0; i < first.length; i++ )
 		if( first[i] == "." ){
 			decimalfirst = true;
