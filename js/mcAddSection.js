@@ -20,6 +20,33 @@ function mcAddSection( first, second ){
 		first.shift();
 	while( Number( second[0] )== 0 )
 		second.shift();
+	if( first[0] == "-"  && second[0] == "-" ) {
+		first = first.slice( 1 );
+		second = second.slice( 1 );
+		first = first.join( "" );
+		second = second.join( "" );
+		third = mcAddSection( first, second );
+		third = third.split( "" );
+		third.unshift( "-" );
+		third = third.join( "" );
+		return third;
+	} else if ( first[0] != "-" && second[0] == "-" ) {
+		second = second.slice( 1 );
+		first = first.join( "" );
+		second = second.join( "" );
+		third = mcSubSection( first, second );
+		third = third.split( "" );
+		third = third.join( "" );
+		return third;
+	} else if ( first[0] == "-" && second[0] != "-" ) {
+		first = first.slice( 1 );
+		first = first.join( "" );
+		second = second.join( "" );
+		third = mcSubSection( second, first );
+		third = third.split( "" );
+		third = third.join( "" );
+		return third;
+	}
 	for( i = 0; i < first.length; i++ )
 		if( first[i] == "." ){
 			decimalfirst = true;

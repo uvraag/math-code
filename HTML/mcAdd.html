@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="Uvraag">
-    <meta charset="UTF-8">
-    <script src="../js/mcAddSection.js"></script>
-    <script src="../js/mcAdd.js"></script>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="Uvraag">
+	<meta charset="UTF-8">
+	<script src="../js/mcAddSection.js"></script>
+	<script src="../js/mcAdd.js"></script>
+	<script src="../js/mcSubSolve.js"></script>
+	<script src="../js/mcSubSection.js"></script>
 </head>
 <body>
   <p>Enter Value</p>
@@ -16,7 +18,7 @@
 
 <script>
 function start(){
-    var temp = mcAdd( document.getElementById( "in1" ).value, document.getElementById( "in2" ).value );
+    var temp = mcAddSection( document.getElementById( "in1" ).value, document.getElementById( "in2" ).value );
 document.getElementById( "show" ).innerHTML = temp;
 }
 </script>
