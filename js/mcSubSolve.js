@@ -36,6 +36,9 @@ function mcSubSolve( first, second ){
 		}
 	}
 	third = third.reverse();
+	while ( third[0] == "0" ) {
+		third.shift();
+	}
 	third = third.join( "" );
 	return third;
 }
