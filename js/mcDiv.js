@@ -1,18 +1,21 @@
 function mcDiv( dividend, divisor ) {
 	var lengthno,
 		i, j, initial,
-      table,
-      quotientIndex, dividendIndex,
+		table,
+		counting,
+		remainder,
+		quotient,
+		quotientIndex, dividendIndex,
 		dividendIndex, divisorLastIndex,
 		decimaldividend, decimaldivisor, decimalthirdno,
 		dividendpos, divisorpos,
 		dividendslice, divisorslice,
 		dividendhalf, divisorhalf,
 		third, thirdhalf, thirdslice;
-	third = [];
-   quotientIndex = initial = 0;
-   dividendIndex = 1;
-   table = divisor;
+	third = quotient = [];
+	quotientIndex = initial = 0;
+	dividendIndex = 1;
+	table = divisor;
 	decimaldividend = false;
 	decimaldivisor = false;
 	dividendpos = divisorpos = -1;
@@ -69,17 +72,22 @@ function mcDiv( dividend, divisor ) {
 	if( decimaldividend == false && decimaldivisor == false ){
 		lengthno = dividend.length;
 		for( i = 0; i < lengthno; i++, dividendIndex++ ) {
-         dividendhold = dividend.splice( initial, dividendIndex );
+			dividendhold = dividend.splice( initial, dividendIndex );
 			if ( dividendhold >= divisor ) {
-            for ( var counting = 1; dividendhold >= table; counting++ ) {
-               
-            }
-         }
+				for ( counting = 1; dividendhold >= table; counting++ ) {
+					table = divisor * counting;
+					if ( table == dividendhold ) {
+						remainder = 0;
+						quotient[quotientIndex] = counting;
+						quotientIndex++;
+						initial = i;
+						dividendIndex = i + 1;
+					}
+				}
+			}
 		}
-		third = mcAdd.apply( null, third );
-		return third;
-	}
-	else if( decimaldividend == true || decimaldivisor == true ){
+		return quotient.join("");
+	} else if( decimaldividend == true || decimaldivisor == true ){
 
 		dividendslice = dividend.slice( dividendpos + 1 );
 		divisorslice = divisor.slice( divisorpos + 1 );
