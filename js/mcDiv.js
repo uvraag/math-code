@@ -80,8 +80,8 @@ function mcDiv( dividend, divisor ) {
 						remainder = 0;
 						quotient[quotientIndex] = counting;
 						quotientIndex++;
-						initial = i;
-						dividendIndex = i + 1;
+						initial = i + 1;
+						dividendIndex = i + 2;
 					}
 				}
 			}

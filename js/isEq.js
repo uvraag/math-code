@@ -1,4 +1,4 @@
-function mcAddSection( first, second ){
+function isEq( first, second ){
 	var lengthno,
 		i,
 		firstLastIndex, secondLastIndex,
@@ -60,26 +60,16 @@ function mcAddSection( first, second ){
 			break;
 		}
 	if( decimalfirst == false && decimalsecond == false ) {
-		if( first.length > second.length )
+		if ( first.length == second.length )
 			lengthno = first.length;
-		else
-			lengthno = second.length;
-		firstLastIndex = first.length - 1;
-		secondLastIndex = second.length - 1;
-		for( i = 0; i < lengthno; i++, firstLastIndex--, secondLastIndex-- ) {
-			firstnohold = (firstLastIndex < 0)? 0 : Number( first[ firstLastIndex ] );
-			secondnohold = (secondLastIndex < 0)? 0 : Number( second[ secondLastIndex ] );
-			third[i] = (isNaN( third[i] ))? 0 : third[i];
-			third[i] = Number( third[i] ) + firstnohold + secondnohold;
-			third[i] = String( third[i] );
-			if( third[i].length == 2 ) {
-				third[ i + 1 ] = third[i].charAt( 0 );
-				third[ i ] = third[i].charAt( 1 );
-			}
+			for ( i = 0; i < lengthno; i++ ) {
+				if( first[i] != second[i] ) {
+					return false;
+				}
+				return true;
+		} else {
+			return false;
 		}
-		third = third.reverse();
-		third = third.join( "" );
-		return third;
 	}
 	else if( decimalfirst == true || decimalsecond == true ) {
 
