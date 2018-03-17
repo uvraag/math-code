@@ -60,13 +60,14 @@ function isEq( first, second ){
 			break;
 		}
 	if( decimalfirst == false && decimalsecond == false ) {
-		if ( first.length == second.length )
+		if ( first.length == second.length ) {
 			lengthno = first.length;
 			for ( i = 0; i < lengthno; i++ ) {
 				if( first[i] != second[i] ) {
 					return false;
 				}
-				return true;
+			}
+         return true;
 		} else {
 			return false;
 		}
