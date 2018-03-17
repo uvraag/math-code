@@ -67,7 +67,7 @@ function isEq( first, second ){
 					return false;
 				}
 			}
-         return true;
+			return true;
 		} else {
 			return false;
 		}
