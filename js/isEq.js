@@ -25,28 +25,14 @@ function isEq( first, second ){
 		second = second.slice( 1 );
 		first = first.join( "" );
 		second = second.join( "" );
-		third = mcAddSection( first, second );
-		third = third.split( "" );
-		third.unshift( "-" );
-		third = third.join( "" );
+		third = isEq( first, second );
 		return third;
 	} else if ( first[0] != "-" && second[0] == "-" ) {
-		second = second.slice( 1 );
-		first = first.join( "" );
-		second = second.join( "" );
-		third = mcSubSection( first, second );
-		third = third.split( "" );
-		third = third.join( "" );
-		return third;
+		return false;
 	} else if ( first[0] == "-" && second[0] != "-" ) {
-		first = first.slice( 1 );
-		first = first.join( "" );
-		second = second.join( "" );
-		third = mcSubSection( second, first );
-		third = third.split( "" );
-		third = third.join( "" );
-		return third;
+		return false;
 	}
+
 	for( i = 0; i < first.length; i++ )
 		if( first[i] == "." ){
 			decimalfirst = true;
