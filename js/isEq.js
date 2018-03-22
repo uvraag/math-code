@@ -16,9 +16,9 @@ function isEq( first, second ){
 	second = String( second );
 	first = first.split( "" );
 	second = second.split( "" );
-	while( Number( first[0] )== 0 )
+	while( Number( first[0] ) == 0 )
 		first.shift();
-	while( Number( second[0] )== 0 )
+	while( Number( second[0] ) == 0 )
 		second.shift();
 	if( first[0] == "-"  && second[0] == "-" ) {
 		first = first.slice( 1 );
@@ -57,28 +57,30 @@ function isEq( first, second ){
 		} else {
 			return false;
 		}
-	}
-	else if( decimalfirst == true || decimalsecond == true ) {
+	} else if( decimalfirst == true || decimalsecond == true ) {
 
 		if( decimalfirst == false ) {
 			first = first.join( "" );
 			firstpos = first.length;
 			first = first.concat( ".0" );
 			first = first.split( "" );
-		}
-		else if( decimalsecond == false ) {
+		} else if( decimalsecond == false ) {
 			second = second.join( "" );
 			secondpos = second.length;
 			second = second.concat( ".0" );
 			second = second.split( "" );
 		}
-		firstslice = (firstpos < 0)? 0 : first.slice( firstpos + 1 );
-		secondslice = (secondpos < 0)? 0 : second.slice( secondpos + 1 );
-		while( firstslice.length > secondslice.length )
-			secondslice.push( "0" );
-		while( secondslice.length > firstslice.length )
-			firstslice.push( "0" );
+		firstslice = first.slice( firstpos + 1 );
+		secondslice = second.slice( secondpos + 1 );
 
+		while ( firstslice[ firstslice.length - 1 ] == 0 ) {
+			firstslice.pop();
+		}
+		while ( secondslice[ secondslice.length - 1 ] == 0 ) {
+			secondslice.pop();
+		}
+		firstslice[0] = ( firstslice[0] == undefined ) ? 0 : firstslice[0];
+		secondslice[0] = ( secondslice[0] == undefined ) ? 0 : secondslice[0];
 		firsthalf = first.slice( 0, firstpos );
 		secondhalf = second.slice( 0, secondpos );
 
@@ -86,33 +88,20 @@ function isEq( first, second ){
 		secondhalf = secondhalf.join( "" );
 		firstslice = firstslice.join( "" );
 		secondslice = secondslice.join( "" );
-
-		thirdhalf = mcAddSection( firsthalf, secondhalf );
-		thirdslice = mcAddSection( firstslice, secondslice );
-
-		if( firstslice.length == secondslice.length &&
-			thirdslice.length == firstslice.length ) {
-
-			thirdslice = thirdslice.split( "" );
-			while( thirdslice[thirdslice.length - 1] == 0 )
-				thirdslice.pop();
-			thirdslice = thirdslice.join( "" );
-			third = thirdhalf.concat( ".", thirdslice );
-			return third;
+		if ( firstslice.length == secondslice.length ) {
+			thirdslice = isEq( firstslice, secondslice );
+		} else {
+			thirdslice = false;
 		}
-		else if( firstslice.length == secondslice.length &&
-			thirdslice.length == firstslice.length + 1 ){
 
-			thirdhalf = mcAddSection( thirdhalf, thirdslice.charAt( 0 ) );
-			thirdslice = thirdslice.split( "" );
-			thirdslice.shift();
-			while( thirdslice[thirdslice.length - 1] == 0 )
-				thirdslice.pop();
-			thirdslice = thirdslice.join( "" );
+		thirdhalf = isEq( firsthalf, secondhalf );
 
-			third = thirdhalf.concat( ".", thirdslice );
-			return third;
+		if ( thirdhalf == thirdslice ) {
+			return true;
+		} else {
+			return false;
 		}
+
 	}
 	return "Something went wrong";
 }
