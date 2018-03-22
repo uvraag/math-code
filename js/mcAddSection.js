@@ -66,7 +66,7 @@ function mcAddSection( first, second ){
 			lengthno = second.length;
 		firstLastIndex = first.length - 1;
 		secondLastIndex = second.length - 1;
-		for( i = 0; i < lengthno; i++, firstLastIndex--, secondLastIndex--) {
+		for( i = 0; i < lengthno; i++, firstLastIndex--, secondLastIndex-- ) {
 			firstnohold = (firstLastIndex < 0)? 0 : Number( first[ firstLastIndex ] );
 			secondnohold = (secondLastIndex < 0)? 0 : Number( second[ secondLastIndex ] );
 			third[i] = (isNaN( third[i] ))? 0 : third[i];
