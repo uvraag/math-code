@@ -45,6 +45,33 @@ function isEq( first, second ){
 			secondpos = i;
 			break;
 		}
+	while ( first[ first.length - 1 ] == 0 && decimalfirst == true ) {
+		first.pop();
+	}
+	while ( second[ second.length - 1 ] == 0 && decimalsecond == true ) {
+		second.pop();
+	}
+	while ( first[ first.length - 1 ] == "." ) {
+		first.pop();
+		decimalfirst = false;
+	}
+	while ( second[ second.length - 1 ] == "." ) {
+		second.pop();
+		decimalsecond = false;
+	}
+	for( i = 0; i < first.length; i++ )
+		if( first[i] == "." ){
+			decimalfirst = true;
+			firstpos = i;
+			break;
+		}
+	for( i = 0; i < second.length; i++ )
+		if( second[i] == "." ){
+			decimalsecond = true;
+			secondpos = i;
+			break;
+		}
+
 	if( decimalfirst == false && decimalsecond == false ) {
 		if ( first.length == second.length ) {
 			lengthno = first.length;
@@ -57,30 +84,14 @@ function isEq( first, second ){
 		} else {
 			return false;
 		}
-	} else if( decimalfirst == true || decimalsecond == true ) {
+	} else if ( decimalfirst == true && decimalsecond == false ) {
+		return false;
+	} else if ( decimalfirst == false && decimalsecond == true ) {
+		return false;
+	} else if( decimalfirst == true && decimalsecond == true ) {
 
-		if( decimalfirst == false ) {
-			first = first.join( "" );
-			firstpos = first.length;
-			first = first.concat( ".0" );
-			first = first.split( "" );
-		} else if( decimalsecond == false ) {
-			second = second.join( "" );
-			secondpos = second.length;
-			second = second.concat( ".0" );
-			second = second.split( "" );
-		}
 		firstslice = first.slice( firstpos + 1 );
 		secondslice = second.slice( secondpos + 1 );
-
-		while ( firstslice[ firstslice.length - 1 ] == 0 ) {
-			firstslice.pop();
-		}
-		while ( secondslice[ secondslice.length - 1 ] == 0 ) {
-			secondslice.pop();
-		}
-		firstslice[0] = ( firstslice[0] == undefined ) ? 0 : firstslice[0];
-		secondslice[0] = ( secondslice[0] == undefined ) ? 0 : secondslice[0];
 		firsthalf = first.slice( 0, firstpos );
 		secondhalf = second.slice( 0, secondpos );
 
@@ -88,14 +99,13 @@ function isEq( first, second ){
 		secondhalf = secondhalf.join( "" );
 		firstslice = firstslice.join( "" );
 		secondslice = secondslice.join( "" );
+
 		if ( firstslice.length == secondslice.length ) {
 			thirdslice = isEq( firstslice, secondslice );
 		} else {
 			thirdslice = false;
 		}
-
 		thirdhalf = isEq( firsthalf, secondhalf );
-
 		if ( thirdhalf == thirdslice ) {
 			return true;
 		} else {
