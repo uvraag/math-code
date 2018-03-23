@@ -1,7 +1,7 @@
 # math-code
 
 ## What is a math-code?
-Actually math-code simple a computer program can do calculate large digit value.
+Actually math-code simple a javascript program can do calculate large digit value.
 
 #### What is the value of 83247834928749827394872398472983749823749823794872398472938749823749823674623748237 * 8676378326376283.7283232389999999999999999999999999999329392839789238
 If you type these number in calculator answer show in scientific notation but what is the **exact value** of these calculation.<br>
