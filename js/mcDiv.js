@@ -72,7 +72,7 @@ function mcDiv( dividend, divisor ) {
 	if( decimaldividend == false && decimaldivisor == false ){
 		lengthno = dividend.length;
 		for( i = 0; i < lengthno; i++, dividendIndex++ ) {
-			dividendhold = dividend.splice( initial, dividendIndex );
+			dividendhold = dividend.slice( initial, dividendIndex );
 			if ( dividendhold >= divisor ) {
 				for ( counting = 1; dividendhold >= table; counting++ ) {
 					table = divisor * counting;
