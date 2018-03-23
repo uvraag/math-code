@@ -32,7 +32,6 @@ function isEq( first, second ){
 	} else if ( first[0] == "-" && second[0] != "-" ) {
 		return false;
 	}
-
 	for( i = 0; i < first.length; i++ )
 		if( first[i] == "." ){
 			decimalfirst = true;
@@ -71,7 +70,6 @@ function isEq( first, second ){
 			secondpos = i;
 			break;
 		}
-
 	if( decimalfirst == false && decimalsecond == false ) {
 		if ( first.length == second.length ) {
 			lengthno = first.length;
@@ -89,17 +87,14 @@ function isEq( first, second ){
 	} else if ( decimalfirst == false && decimalsecond == true ) {
 		return false;
 	} else if( decimalfirst == true && decimalsecond == true ) {
-
 		firstslice = first.slice( firstpos + 1 );
 		secondslice = second.slice( secondpos + 1 );
 		firsthalf = first.slice( 0, firstpos );
 		secondhalf = second.slice( 0, secondpos );
-
 		firsthalf = firsthalf.join( "" );
 		secondhalf = secondhalf.join( "" );
 		firstslice = firstslice.join( "" );
 		secondslice = secondslice.join( "" );
-
 		if ( firstslice.length == secondslice.length ) {
 			thirdslice = isEq( firstslice, secondslice );
 		} else {
@@ -111,7 +106,6 @@ function isEq( first, second ){
 		} else {
 			return false;
 		}
-
 	}
 	return "Something went wrong";
 }
