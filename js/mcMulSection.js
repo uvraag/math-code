@@ -74,10 +74,19 @@ function mcMulSection( first, second ){
 		return third;
 	}
 	else if( decimalfirst == true || decimalsecond == true ){
-
+		if( decimalfirst == false ) {
+			first = first.join( "" );
+			firstpos = first.length;
+			first = first.concat( ".0" );
+			first = first.split( "" );
+		} else if( decimalsecond == false ) {
+			second = second.join( "" );
+			secondpos = second.length;
+			second = second.concat( ".0" );
+			second = second.split( "" );
+		}
 		firstslice = first.slice( firstpos + 1 );
 		secondslice = second.slice( secondpos + 1 );
-
 		firsthalf = first.slice( 0, firstpos );
 		secondhalf = second.slice( 0, secondpos );
 		first = firsthalf.concat( firstslice );
