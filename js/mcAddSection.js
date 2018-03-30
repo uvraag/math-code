@@ -88,8 +88,7 @@ function mcAddSection( first, second ){
 			firstpos = first.length;
 			first = first.concat( ".0" );
 			first = first.split( "" );
-		}
-		else if( decimalsecond == false ) {
+		} else if( decimalsecond == false ) {
 			second = second.join( "" );
 			secondpos = second.length;
 			second = second.concat( ".0" );
