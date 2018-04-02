@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/w3-4.css">
+<link rel="stylesheet" href="../css/w3-theme-teal.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+   body {
+      font-family: "Roboto", sans-serif
+   }
+
+   .w3-bar-block .w3-bar-item {
+      padding: 16px;
+      font-weight: bold
+   }
+</style>
+
+<body>
+
+   <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+      <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#">
+     math-code
+ </a>
+      <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+      <a class="w3-bar-item w3-button w3-teal" href="#">Home</a>
+      <a class="w3-bar-item w3-button" href="#">Link 1</a>
+      <a class="w3-bar-item w3-button" href="#">Link 2</a>
+      <a class="w3-bar-item w3-button" href="#">Link 3</a>
+      <a class="w3-bar-item w3-button" href="#">Link 4</a>
+      <a class="w3-bar-item w3-button" href="#">Link 5</a>
+      <div>
+         <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Dropdown <i class="fa fa-caret-down"></i></a>
+         <div id="demo" class="w3-hide">
+            <a class="w3-bar-item w3-button" href="#">Link</a>
+            <a class="w3-bar-item w3-button" href="#">Link</a>
+            <a class="w3-bar-item w3-button" href="#">Link</a>
+         </div>
+      </div>
+   </nav>
+
+   <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+   <div class="w3-main" style="margin-left:250px;">
+
+      <div id="myTop" class="w3-container w3-top w3-theme w3-large">
+         <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+            <span id="myIntro" class="w3-hide">
+     math-code
+  </span></p>
+      </div>
+
+      <header class="w3-container w3-theme" style="padding:64px 32px">
+         <h1 class="w3-xxxlarge">
+     math-code
+  </h1>
+      </header>
+
+      <div class="w3-container" style="padding:32px">
+
+         <h2>What is math-code?</h2>
+
+         <p>Javascript program can do calculate large digit value.</p>
+
+         <ul class="w3-leftbar w3-theme-border" style="list-style:none">
+            <li>Simple</li>
+            <li>Easier to learn</li>
+         </ul>
+         <br>
+
+         <hr>
+         <h2>math-code is Free</h2>
+         <p>math-code is free to use. MIT license.</p>
+
+         <hr>
+
+         <div class="w3-card-4">
+            <div class="w3-container w3-brown">
+               <h2>Addition</h2>
+            </div>
+            <div class="w3-container">
+               <p>
+                  <label class="w3-text-brown"><b>First Number</b></label>
+                  <input class="w3-input w3-border w3-sand" name="first" type="text"></p>
+               <p>
+                  <label class="w3-text-brown"><b>Last Number</b></label>
+                  <input class="w3-input w3-border w3-sand" name="last" type="text"></p>
+               <p>
+                  <button class="w3-btn w3-brown">Calculate</button></p>
+               <p id="add" style="font-size:50px"></p>
+            </div>
+         </div>
+
+
+      </div>
+
+      <script>
+         // Open and close the sidebar on medium and small screens
+         function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+         }
+
+         function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+         }
+
+         // Change style of top container on scroll
+         window.onscroll = function() {
+            myFunction()
+         };
+
+         function myFunction() {
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+               document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+               document.getElementById("myIntro").classList.add("w3-show-inline-block");
+            } else {
+               document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+               document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+            }
+         }
+
+         // Accordions
+         function myAccordion(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+               x.className += " w3-show";
+               x.previousElementSibling.className += " w3-theme";
+            } else {
+               x.className = x.className.replace("w3-show", "");
+               x.previousElementSibling.className =
+                  x.previousElementSibling.className.replace(" w3-theme", "");
+            }
+         }
+      </script>
+
+</body>
+
+</html>
