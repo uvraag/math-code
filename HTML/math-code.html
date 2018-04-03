@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS</title>
+<head>
+<title>math-code</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../css/w3-4.css">
 <link rel="stylesheet" href="../css/w3-theme-teal.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../js/math-code.js"></script>
 <style>
    body {
       font-family: "Roboto", sans-serif
@@ -16,7 +18,7 @@
       font-weight: bold
    }
 </style>
-
+</head>
 <body>
 
    <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
@@ -24,9 +26,21 @@
      math-code
  </a>
       <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-      <a class="w3-bar-item w3-button w3-teal" href="#">Home</a>
-      <a class="w3-bar-item w3-button" href="#">Link 1</a>
-      <a class="w3-bar-item w3-button" href="#">Link 2</a>
+      <a class="w3-bar-item w3-button w3-teal"
+         href="#addition"
+      >
+         Addition
+      </a>
+      <a class="w3-bar-item w3-button"
+         href="#subtraction"
+      >
+         Subtraction
+      </a>
+      <a class="w3-bar-item w3-button"
+         href="#multiplication"
+      >
+         Multiplication
+      </a>
       <a class="w3-bar-item w3-button" href="#">Link 3</a>
       <a class="w3-bar-item w3-button" href="#">Link 4</a>
       <a class="w3-bar-item w3-button" href="#">Link 5</a>
@@ -58,37 +72,109 @@
       </header>
 
       <div class="w3-container" style="padding:32px">
-
          <h2>What is math-code?</h2>
 
          <p>Javascript program can do calculate large digit value.</p>
 
-         <ul class="w3-leftbar w3-theme-border" style="list-style:none">
-            <li>Simple</li>
-            <li>Easier to learn</li>
-         </ul>
-         <br>
-
-         <hr>
-         <h2>math-code is Free</h2>
-         <p>math-code is free to use. MIT license.</p>
-
-         <hr>
-
-         <div class="w3-card-4">
+         <div class="w3-card-4"
+            id="addition"
+         >
             <div class="w3-container w3-brown">
                <h2>Addition</h2>
             </div>
             <div class="w3-container">
                <p>
                   <label class="w3-text-brown"><b>First Number</b></label>
-                  <input class="w3-input w3-border w3-sand" name="first" type="text"></p>
+                  <input class="w3-input w3-border w3-sand"
+                     type="number"
+                     id="inAdd1"
+                  >
+               </p>
                <p>
-                  <label class="w3-text-brown"><b>Last Number</b></label>
-                  <input class="w3-input w3-border w3-sand" name="last" type="text"></p>
+                  <label class="w3-text-brown"><b>Second Number</b></label>
+                  <input class="w3-input w3-border w3-sand"
+                     type="number"
+                     id="inAdd2"
+                  >
+               </p>
                <p>
-                  <button class="w3-btn w3-brown">Calculate</button></p>
-               <p id="add" style="font-size:50px"></p>
+                  <button class="w3-btn w3-brown"
+                     onclick="add()"
+                  >
+                     Calculate
+                  </button></p>
+               <p class="w3-responsive"
+                  id="add"
+                  style="font-size:50px"
+               ></p>
+            </div>
+         </div>
+
+         <div class="w3-card-4"
+            id="subtraction"
+         >
+            <div class="w3-container w3-purple">
+               <h2>Subtraction</h2>
+            </div>
+            <div class="w3-container">
+               <p>
+                  <label class="w3-text-purple"><b>First Number</b></label>
+                  <input class="w3-input w3-border w3-sand"
+                     type="number"
+                     id="inSub1"
+                  >
+               </p>
+               <p>
+                  <label class="w3-text-purple"><b>Second Number</b></label>
+                  <input class="w3-input w3-border w3-sand"
+                     type="number"
+                     id="inSub2"
+                  >
+               </p>
+               <p>
+                  <button class="w3-btn w3-purple"
+                     onclick="sub()"
+                  >
+                     Calculate
+                  </button></p>
+               <p class="w3-responsive"
+                  id="sub"
+                  style="font-size:50px"
+               ></p>
+            </div>
+         </div>
+
+         <div class="w3-card-4"
+            id="multiplication"
+         >
+            <div class="w3-container w3-indigo">
+               <h2>Multiplication</h2>
+            </div>
+            <div class="w3-container">
+               <p>
+                  <label class="w3-text-indigo"><b>First Number</b></label>
+                  <input class="w3-input w3-border w3-sand"
+                     type="number"
+                     id="inMul1"
+                  >
+               </p>
+               <p>
+                  <label class="w3-text-indigo"><b>Second Number</b></label>
+                  <input class="w3-input w3-border w3-sand"
+                     type="number"
+                     id="inMul2"
+                  >
+               </p>
+               <p>
+                  <button class="w3-btn w3-indigo"
+                     onclick="mul()"
+                  >
+                     Calculate
+                  </button></p>
+               <p class="w3-responsive"
+                  id="mul"
+                  style="font-size:50px"
+               ></p>
             </div>
          </div>
 
@@ -96,6 +182,21 @@
       </div>
 
       <script>
+      function add(){
+      	var temp = mcAddSection( document.getElementById( "inAdd1" ).value, document.getElementById( "inAdd2" ).value );
+      	document.getElementById( "add" ).innerHTML = temp;
+      }
+
+      function sub(){
+      	var temp = mcSubSection( document.getElementById( "inSub1" ).value, document.getElementById( "inSub2" ).value );
+      	document.getElementById( "sub" ).innerHTML = temp;
+      }
+
+      function mul(){
+      	var temp = mcMulSection( document.getElementById( "inMul1" ).value, document.getElementById( "inMul2" ).value );
+      	document.getElementById( "mul" ).innerHTML = temp;
+      }
+
          // Open and close the sidebar on medium and small screens
          function w3_open() {
             document.getElementById("mySidebar").style.display = "block";
