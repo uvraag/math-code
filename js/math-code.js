@@ -66,7 +66,7 @@ function mcAddSection( first, second ){
 			lengthno = second.length;
 		firstLastIndex = first.length - 1;
 		secondLastIndex = second.length - 1;
-		for( i = 0; i < lengthno; i++, firstLastIndex--, secondLastIndex--) {
+		for( i = 0; i < lengthno; i++, firstLastIndex--, secondLastIndex-- ) {
 			firstnohold = (firstLastIndex < 0)? 0 : Number( first[ firstLastIndex ] );
 			secondnohold = (secondLastIndex < 0)? 0 : Number( second[ secondLastIndex ] );
 			third[i] = (isNaN( third[i] ))? 0 : third[i];
@@ -88,8 +88,7 @@ function mcAddSection( first, second ){
 			firstpos = first.length;
 			first = first.concat( ".0" );
 			first = first.split( "" );
-		}
-		else if( decimalsecond == false ) {
+		} else if( decimalsecond == false ) {
 			second = second.join( "" );
 			secondpos = second.length;
 			second = second.concat( ".0" );
@@ -159,11 +158,11 @@ function mcMulOne( number, one ){
 	lengthno = number.length;
 	number = number.split( "" );
 	numberLastIndex = lengthno - 1;
-	for( i = 0; i < lengthno; i++, numberLastIndex-- ){
-		third[i] = (isNaN( third[i] ))? 0 : third[i];
+	for( i = 0; i < lengthno; i++, numberLastIndex-- ) {
+		third[i] = isNaN( third[i] ) ? 0 : third[i];
 		third[i] = Number( third[i] ) + Number( number[ numberLastIndex ] ) * one;
 		third[i] = String( third[i] );
-		if( third[i].length == 2 ){
+		if( third[i].length == 2 ) {
 			third[ i + 1 ] = third[i].charAt( 0 );
 			third[ i ] = third[i].charAt( 1 );
 		}
@@ -172,6 +171,7 @@ function mcMulOne( number, one ){
 	third = third.join( "" );
 	return third;
 }
+
 function mcMulSection( first, second ){
 	var lengthno,
 		i, j,
@@ -193,6 +193,36 @@ function mcMulSection( first, second ){
 		first.shift();
 	while( Number( second[0] )== 0 )
 		second.shift();
+
+	if( first[0] == "-"  && second[0] == "-" ) {
+		first = first.slice( 1 );
+		second = second.slice( 1 );
+		first = first.join( "" );
+		second = second.join( "" );
+		third = mcMulSection( first, second );
+		third = third.split( "" );
+		third = third.join( "" );
+		return third;
+	} else if ( first[0] != "-" && second[0] == "-" ) {
+		second = second.slice( 1 );
+		first = first.join( "" );
+		second = second.join( "" );
+		third = mcMulSection( first, second );
+		third = third.split( "" );
+		third.unshift( "-" );
+		third = third.join( "" );
+		return third;
+	} else if ( first[0] == "-" && second[0] != "-" ) {
+		first = first.slice( 1 );
+		first = first.join( "" );
+		second = second.join( "" );
+		third = mcMulSection( second, first );
+		third = third.split( "" );
+		third.unshift( "-" );
+		third = third.join( "" );
+		return third;
+	}
+
 	for( i = 0; i < first.length; i++ )
 		if( first[i] == "." ){
 			decimalfirst = true;
@@ -218,10 +248,19 @@ function mcMulSection( first, second ){
 		return third;
 	}
 	else if( decimalfirst == true || decimalsecond == true ){
-
+		if( decimalfirst == false ) {
+			first = first.join( "" );
+			firstpos = first.length;
+			first = first.concat( ".0" );
+			first = first.split( "" );
+		} else if( decimalsecond == false ) {
+			second = second.join( "" );
+			secondpos = second.length;
+			second = second.concat( ".0" );
+			second = second.split( "" );
+		}
 		firstslice = first.slice( firstpos + 1 );
 		secondslice = second.slice( secondpos + 1 );
-
 		firsthalf = first.slice( 0, firstpos );
 		secondhalf = second.slice( 0, secondpos );
 		first = firsthalf.concat( firstslice );
@@ -244,6 +283,7 @@ function mcMulSection( first, second ){
 	}
 	return "Something went wrong";
 }
+
 function mcMul(){
 	var third = 1;
 	for( var i = 0, j = arguments.length; i < j; i++ ){
@@ -251,19 +291,22 @@ function mcMul(){
 	}
 	return third;
 }
-function mcPow( number, power ){
-  if ( power == 0 || number == 1 )
-    return 1;
+
+function mcPow( number, power ) {
+   if ( power == 0 || number == 1 )
+      return 1;
   var holdnumber = [], third;
-  for (var i = 0; i < power; i++)
-    holdnumber[ i ] = number;
+  for (var i = 0; i < power; i++) {
+     holdnumber[ i ] = number;
+  }
   third = mcMul.apply( null, holdnumber );
   return third;
 }
-function mcFact( number ){
+
+function mcFact( number ) {
   number = Number( number );
   if ( number == 0 || number == 1 )
     return 1;
   else
-    return mcMul( number, mcFact( number - 1) );
+    return mcMul( number, mcFact( number - 1 ) );
 }
