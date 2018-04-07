@@ -34,7 +34,13 @@
       <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#">
      math-code
  </a>
-      <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+      <a class="w3-bar-item w3-button w3-hide-large w3-large"
+         href="javascript:void(0)"
+         onclick="w3_close()"
+      >
+         Close <i class="fa fa-remove"></i>
+      </a>
+
       <a class="w3-bar-item w3-button w3-teal"
          href="#addition"
       >
@@ -54,11 +60,38 @@
       <a class="w3-bar-item w3-button" href="#">Link 4</a>
       <a class="w3-bar-item w3-button" href="#">Link 5</a>
       <div>
-         <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Dropdown <i class="fa fa-caret-down"></i></a>
+         <a class="w3-bar-item w3-button"
+            onclick="myAccordion('demo')"
+            href="javascript:void(0)"
+         >
+            Unique Pages <i class="fa fa-caret-down"></i>
+         </a>
          <div id="demo" class="w3-hide">
-            <a class="w3-bar-item w3-button" href="#">Link</a>
-            <a class="w3-bar-item w3-button" href="#">Link</a>
-            <a class="w3-bar-item w3-button" href="#">Link</a>
+            <a class="w3-bar-item w3-button"
+               href="https://rawgit.com/uvraag/math-code/master/HTML/mcAdd.html"
+            >
+               Addition
+            </a>
+            <a class="w3-bar-item w3-button"
+               href="https://rawgit.com/uvraag/math-code/master/HTML/mcSub.html"
+            >
+               Subtraction
+            </a>
+            <a class="w3-bar-item w3-button"
+               href="https://rawgit.com/uvraag/math-code/master/HTML/mcMul.html"
+            >
+               Multiplication
+            </a>
+            <a class="w3-bar-item w3-button"
+               href="https://rawgit.com/uvraag/math-code/master/HTML/mcFact.html"
+            >
+               Factorial
+            </a>
+            <a class="w3-bar-item w3-button"
+               href="https://rawgit.com/uvraag/math-code/master/HTML/mcPow.html"
+            >
+               Power
+            </a>
          </div>
       </div>
    </nav>
@@ -70,8 +103,9 @@
       <div id="myTop" class="w3-container w3-top w3-theme w3-large">
          <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
             <span id="myIntro" class="w3-hide">
-     math-code
-  </span></p>
+               math-code
+            </span>
+         </p>
       </div>
 
       <header class="w3-container w3-theme" style="padding:64px 32px">
@@ -206,6 +240,10 @@
       	document.getElementById( "mul" ).innerHTML = temp;
       }
 
+      // Add scroll when click hash
+      window.addEventListener( "hashchange", function () {
+         window.scrollTo( window.scrollX, window.scrollY - 100 );
+      })
          // Open and close the sidebar on medium and small screens
          function w3_open() {
             document.getElementById("mySidebar").style.display = "block";
