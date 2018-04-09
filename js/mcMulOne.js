@@ -9,11 +9,11 @@ function mcMulOne( number, one ){
 	lengthno = number.length;
 	number = number.split( "" );
 	numberLastIndex = lengthno - 1;
-	for( i = 0; i < lengthno; i++, numberLastIndex-- ){
-		third[i] = (isNaN( third[i] ))? 0 : third[i];
+	for( i = 0; i < lengthno; i++, numberLastIndex-- ) {
+		third[i] = isNaN( third[i] ) ? 0 : third[i];
 		third[i] = Number( third[i] ) + Number( number[ numberLastIndex ] ) * one;
 		third[i] = String( third[i] );
-		if( third[i].length == 2 ){
+		if( third[i].length == 2 ) {
 			third[ i + 1 ] = third[i].charAt( 0 );
 			third[ i ] = third[i].charAt( 1 );
 		}

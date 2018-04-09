@@ -1,4 +1,4 @@
-function mcFact( number ){
+function mcFact( number ) {
   number = Number( number );
   if ( number == 0 || number == 1 )
     return 1;
