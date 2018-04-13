@@ -1,4 +1,4 @@
-function isGt( first, second ){
+function isGte( first, second ){
 	var lengthno,
 		i,
 		firstLastIndex, secondLastIndex,
@@ -25,7 +25,7 @@ function isGt( first, second ){
 		second = second.slice( 1 );
 		first = first.join( "" );
 		second = second.join( "" );
-		third = isGt( second, first );
+		third = isGte( second, first );
 		return third;
 	} else if ( first[0] != "-" && second[0] == "-" ) {
 		return true;
@@ -80,7 +80,7 @@ function isGt( first, second ){
 					return false;
 				}
 			}
-			return false;
+			return true;
 		} else if( first.length > second.length ) {
 			return true;
 		} else if (  first.length < second.length  ) {
@@ -91,14 +91,14 @@ function isGt( first, second ){
 		if ( isEq( firsthalf, second ) ) {
 			return true;
 		} else {
-			return isGt( firsthalf, second );
+			return isGte( firsthalf, second );
 		}
 	} else if ( decimalfirst == false && decimalsecond == true ) {
 		secondhalf = second.slice( 0, secondpos );
 		if ( isEq( first, secondhalf ) ) {
 			return false;
 		} else {
-			return isGt( first, secondhalf );
+			return isGte( first, secondhalf );
 		}
 	} else if( decimalfirst == true && decimalsecond == true ) {
 		firstslice = first.slice( firstpos + 1 );
@@ -112,9 +112,9 @@ function isGt( first, second ){
 			while ( firstslice.length < secondslice.length ) {
 				firstslice.push( "0" );
 			}
-			return isGt( firstslice.join( "" ), secondslice.join( "" ) );
+			return isGte( firstslice.join( "" ), secondslice.join( "" ) );
 		} else {
-			thirdhalf = isGt( firsthalf.join( "" ), secondhalf.join( "" ) );
+			thirdhalf = isGte( firsthalf.join( "" ), secondhalf.join( "" ) );
 			return thirdhalf;
 		}
 	}

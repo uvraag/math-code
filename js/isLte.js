@@ -1,4 +1,4 @@
-function isGt( first, second ){
+function isLte( first, second ){
 	var lengthno,
 		i,
 		firstLastIndex, secondLastIndex,
@@ -25,12 +25,12 @@ function isGt( first, second ){
 		second = second.slice( 1 );
 		first = first.join( "" );
 		second = second.join( "" );
-		third = isGt( second, first );
+		third = isLte( second, first );
 		return third;
 	} else if ( first[0] != "-" && second[0] == "-" ) {
-		return true;
-	} else if ( first[0] == "-" && second[0] != "-" ) {
 		return false;
+	} else if ( first[0] == "-" && second[0] != "-" ) {
+		return true;
 	}
 	for( i = 0; i < first.length; i++ )
 		if( first[i] == "." ){
@@ -74,31 +74,31 @@ function isGt( first, second ){
 		if ( first.length == second.length ) {
 			lengthno = first.length;
 			for ( i = 0; i < lengthno; i++ ) {
-				if ( first[i] > second[i] ) {
+				if ( first[i] < second[i] ) {
 					return true;
-				} else if ( first[i] < second[i] ) {
+				} else if ( first[i] > second[i] ) {
 					return false;
 				}
 			}
-			return false;
-		} else if( first.length > second.length ) {
 			return true;
-		} else if (  first.length < second.length  ) {
+		} else if( first.length < second.length ) {
+			return true;
+		} else if (  first.length > second.length  ) {
 			return false;
 		}
 	} else if ( decimalfirst == true && decimalsecond == false ) {
 		firsthalf = first.slice( 0, firstpos );
 		if ( isEq( firsthalf, second ) ) {
-			return true;
+			return false;
 		} else {
-			return isGt( firsthalf, second );
+			return isLte( firsthalf, second );
 		}
 	} else if ( decimalfirst == false && decimalsecond == true ) {
 		secondhalf = second.slice( 0, secondpos );
 		if ( isEq( first, secondhalf ) ) {
-			return false;
+			return true;
 		} else {
-			return isGt( first, secondhalf );
+			return isLte( first, secondhalf );
 		}
 	} else if( decimalfirst == true && decimalsecond == true ) {
 		firstslice = first.slice( firstpos + 1 );
@@ -112,9 +112,9 @@ function isGt( first, second ){
 			while ( firstslice.length < secondslice.length ) {
 				firstslice.push( "0" );
 			}
-			return isGt( firstslice.join( "" ), secondslice.join( "" ) );
+			return isLte( firstslice.join( "" ), secondslice.join( "" ) );
 		} else {
-			thirdhalf = isGt( firsthalf.join( "" ), secondhalf.join( "" ) );
+			thirdhalf = isLte( firsthalf.join( "" ), secondhalf.join( "" ) );
 			return thirdhalf;
 		}
 	}

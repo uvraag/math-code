@@ -7,8 +7,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="../js/isEq.js"></script>
-	<script src="../js/isGt.js"></script>
-	<title>Greater than</title>
+	<script src="../js/isGte.js"></script>
+	<title>Greater than and Equal</title>
 </head>
 <body>
 	<p>Enter Value</p>
@@ -18,7 +18,7 @@
 	<p id="show" style="font-size:50px"></p>
 <script>
 function start(){
-	var temp = isGt( document.getElementById( "in1" ).value, document.getElementById( "in2" ).value );
+	var temp = isGte( document.getElementById( "in1" ).value, document.getElementById( "in2" ).value );
 	document.getElementById( "show" ).innerHTML = temp;
 }
 </script>
