@@ -73,15 +73,16 @@ function mcDiv( dividend, divisor ) {
 		lengthno = dividend.length;
 		for( i = 0; i < lengthno; i++, dividendIndex++ ) {
 			dividendhold = dividend.slice( initial, dividendIndex );
-			if ( dividendhold >= divisor ) {
-				for ( counting = 1; dividendhold >= table; counting++ ) {
-					table = divisor * counting;
-					if ( table == dividendhold ) {
+			if ( isGte( dividendhold.join(""), divisor.join("") ) ) {
+				for ( counting = 1; isGte( dividendhold.join(""), table ); counting++ ) {
+					table = mcMul( divisor.join(""), counting );
+					if ( isEq( table, dividendhold.join("") ) ) {
 						remainder = 0;
 						quotient[quotientIndex] = counting;
 						quotientIndex++;
 						initial = i + 1;
-						dividendIndex = i + 2;
+						dividendIndex = i + 1;
+						break;
 					}
 				}
 			}
