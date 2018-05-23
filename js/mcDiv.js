@@ -81,11 +81,16 @@ function mcDiv( dividend, divisor ) {
 						quotient[quotientIndex] = counting;
 						quotientIndex++;
 						initial = i + 1;
-						dividendIndex = i + 1;
+						table = divisor.join("");
 						break;
 					}
 				}
+			} else {
+				quotient[ quotientIndex++ ] = 0;
 			}
+		}
+		while ( quotient[0] == 0 ) {
+			quotient.shift();
 		}
 		return quotient.join("");
 	} else if( decimaldividend == true || decimaldivisor == true ){

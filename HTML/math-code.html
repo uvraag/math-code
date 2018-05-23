@@ -41,7 +41,7 @@
          Close <i class="fa fa-remove"></i>
       </a>
 
-      <a class="w3-bar-item w3-button w3-teal"
+      <a class="w3-bar-item w3-button"
          href="#addition"
       >
          Addition
@@ -56,7 +56,11 @@
       >
          Multiplication
       </a>
-      <a class="w3-bar-item w3-button" href="#">Link 3</a>
+      <a class="w3-bar-item w3-button"
+         href="#factorial"
+      >
+         Factorial
+      </a>
       <a class="w3-bar-item w3-button" href="#">Link 4</a>
       <a class="w3-bar-item w3-button" href="#">Link 5</a>
       <div>
@@ -221,6 +225,33 @@
             </div>
          </div>
 
+         <div class="w3-card-4"
+            id="factorial"
+         >
+            <div class="w3-container w3-aqua">
+               <h2>Factorial</h2>
+            </div>
+            <div class="w3-container">
+               <p>
+                  <label class="w3-text-aqua"><b>Enter Number</b></label>
+                  <input class="w3-input w3-border w3-sand"
+                     type="number"
+                     id="inFact1"
+                  >
+               </p>
+               <p>
+                  <button class="w3-btn w3-aqua"
+                     onclick="fact()"
+                  >
+                     Calculate
+                  </button></p>
+               <p class="w3-responsive"
+                  id="fact"
+                  style="font-size:50px"
+               ></p>
+            </div>
+         </div>
+
 
       </div>
 
@@ -238,6 +269,11 @@
       function mul(){
       	var temp = mcMulSection( document.getElementById( "inMul1" ).value, document.getElementById( "inMul2" ).value );
       	document.getElementById( "mul" ).innerHTML = temp;
+      }
+
+      function fact(){
+         var temp = mcFact( document.getElementById( "inFact1" ).value );
+         document.getElementById( "fact" ).innerHTML = temp;
       }
 
       // Add scroll when click hash

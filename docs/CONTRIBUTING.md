@@ -9,7 +9,7 @@ I'm really glad you're reading this, because we need volunteer developers to hel
 - Multiplication or mcMul()
   - mcMulOne()
   - mcMulSection()
-
+- Substraction
 ## Do Not
 
 Please do not edit [math-code.js](https://github.com/uvraag/math-code/blob/master/js/math-code.js) file I am regular up to date this file.
