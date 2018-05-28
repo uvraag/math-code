@@ -75,11 +75,9 @@ function mcDiv( dividend, divisor ) {
 		for( i = 0; i < lengthno; i++, dividendIndex++ ) {
 			dividendhold = dividend.slice( initial, dividendIndex );
 			if ( isGte( dividendhold.join(""), divisor.join("") ) ) {
-				$( "#show1" ).prepend(quotient+"oioi"+"<br>");			//	temparory
-				$( "#show1" ).prepend(dividendhold+"dividendholdoioi"+"<br>");			//	temparory
 				if ( /*isNeq( dividendhold.join(""), table ) &&*/
 					isGte( dividendhold.join(""), table ) ) {
-						for ( counting = 1; isNeq( dividendhold.join(""), table ) &&
+						for ( counting = 1; /*isNeq( dividendhold.join(""), table ) &&*/
 						isGte( dividendhold.join(""), table ); counting++ ) {
 							table = mcMul( divisor.join(""), counting );
 							if ( isEq( table, dividendhold.join("") ) ) {
@@ -103,7 +101,6 @@ function mcDiv( dividend, divisor ) {
 							i = 0;
 							lengthno = temp.length;
 							dividendhold =temp.split("");
-							$( "#show1" ).prepend( /*dividendhold*/ quotient+"popo"+"<br>");			//	temparory
 							table = divisor.join("");
 							break;
 						}
