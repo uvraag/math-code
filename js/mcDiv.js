@@ -75,29 +75,38 @@ function mcDiv( dividend, divisor ) {
 		for( i = 0; i < lengthno; i++, dividendIndex++ ) {
 			dividendhold = dividend.slice( initial, dividendIndex );
 			if ( isGte( dividendhold.join(""), divisor.join("") ) ) {
-				for ( counting = 1; isNeq( dividendhold.join(""), table ) &&
-					isGte( dividendhold.join(""), table ); counting++ ) {
-					table = mcMul( divisor.join(""), counting );
-					if ( isEq( table, dividendhold.join("") ) ) {
-						remainder = 0;
-						quotient[quotientIndex] = counting;
-						quotientIndex++;
-						initial = i + 1;
-						table = divisor.join("");
-						break;
-					}
-				}
-				for ( counting = 1; !isGte( table, dividendhold.join("") ); counting++ ) {
-					table = mcMul( divisor.join(""), counting );
-					if (isGt( table, dividendhold.join("") )) {
-						table = mcMul( divisor.join(""), counting - 1 );
-						quotient[ quotientIndex++ ] = counting;
-						temp = mcSub( dividendhold.join(""), table );
-						temp += dividend.slice( i + 1 ).join("");
-						i = 0;
-						lengthno = temp.length;
-						dividendhold =temp.split("");
-						table = divisor.join("");
+				$( "#show1" ).prepend(quotient+"oioi"+"<br>");			//	temparory
+				$( "#show1" ).prepend(dividendhold+"dividendholdoioi"+"<br>");			//	temparory
+				if ( /*isNeq( dividendhold.join(""), table ) &&*/
+					isGte( dividendhold.join(""), table ) ) {
+						for ( counting = 1; isNeq( dividendhold.join(""), table ) &&
+						isGte( dividendhold.join(""), table ); counting++ ) {
+							table = mcMul( divisor.join(""), counting );
+							if ( isEq( table, dividendhold.join("") ) ) {
+								remainder = 0;
+								quotient[quotientIndex] = counting;
+								quotientIndex++;
+								initial = i + 1;
+								table = divisor.join("");
+								break;
+							}
+						}
+				} else if ( !isGt(table, dividendhold.join(""))/* &&
+					isNeq( dividendhold.join(""), 0) */) {
+					for ( counting = 1; !isGte( table, dividendhold.join("") ); counting++ ) {
+						table = mcMul( divisor.join(""), counting );
+						if (isGt( table, dividendhold.join("") )) {
+							table = mcMul( divisor.join(""), counting - 1 );
+							quotient[ quotientIndex++ ] = counting;
+							temp = mcSub( dividendhold.join(""), table );
+							temp += dividend.slice( i + 1 ).join("");
+							i = 0;
+							lengthno = temp.length;
+							dividendhold =temp.split("");
+							$( "#show1" ).prepend( /*dividendhold*/ quotient+"popo"+"<br>");			//	temparory
+							table = divisor.join("");
+							break;
+						}
 					}
 				}
 			} else {
