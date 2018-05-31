@@ -1,4 +1,4 @@
-function isDivisible( dividend, divisor ) {
+function mcDiv1( dividend, divisor ) {
 	var lengthno,
 		i, j, initial,
 		table,
@@ -73,16 +73,51 @@ function isDivisible( dividend, divisor ) {
 	if( decimaldividend == false && decimaldivisor == false ){
 		lengthno = dividend.length;
 		for( i = 0; i < lengthno; i++, dividendIndex++ ) {
-			if ( isGte( dividend.join(""), divisor.join("") ) ) {
-				for ( counting = 1; isGte( dividend.join(""), table ); counting++ ) {
-					table = mcMul( divisor.join(""), counting );
-					if ( isEq( table, dividend.join("") ) ) {
-						return true;
+			dividendhold = dividend.slice( initial, dividendIndex );
+			if ( isGte( dividendhold.join(""), divisor.join("") ) ) {
+				if ( isDivisible( dividendhold.join(""), table ) ) {
+						for ( counting = 1; isGte( dividendhold.join(""), table ); counting++ ) {
+							table = mcMul( divisor.join(""), counting );
+							if ( isEq( table, dividendhold.join("") ) ) {
+								remainder = 0;
+								quotient[quotientIndex] = counting;
+								quotientIndex++;
+								initial = i + 1;
+								table = divisor.join("");
+								$( "#oi" ).append("<li>dividendhold=" + dividendhold + "</li>");
+								$( "#oi" ).append("<li>quotient=" + quotient + "</li>");
+								$( "#oi" ).append("<li>i=" + i + "</li>");
+								break;
+							}
+						}
+				} else {
+					for ( counting = 1; isGt( dividendhold.join(""), table ); counting++ ) {
+						table = mcMul( divisor.join(""), counting );
+						if (isGt( table, dividendhold.join("") )) {
+							table = mcMul( divisor.join(""), counting - 1 );
+							quotient[ quotientIndex++ ] = counting - 1;
+							temp = mcSub( dividendhold.join(""), table );
+							temp += dividend.slice( i + 1 ).join("");
+							i = -1;
+							initial = dividendIndex = 0;
+							lengthno = temp.length;
+							dividendhold =temp.split("");
+							table = divisor.join("");
+							$( "#po" ).append("<li>dividendhold=" + dividendhold + "</li>");
+							$( "#po" ).append("<li>quotient=" + quotient + "</li>");
+							$( "#po" ).append("<li>i=" + i + "</li>");
+							break;
+						}
 					}
 				}
+			} else {
+				quotient[ quotientIndex++ ] = 0;
 			}
 		}
-		return false;
+		while ( quotient[0] == 0 ) {
+			quotient.shift();
+		}
+		return quotient.join("");
 	} else if( decimaldividend == true || decimaldivisor == true ){
 
 		dividendslice = dividend.slice( dividendpos + 1 );
