@@ -1,3 +1,4 @@
+'use strict';
 function isDivisible( dividend, divisor ) {
 	var lengthno,
 		i, j, initial,
@@ -94,13 +95,13 @@ function isDivisible( dividend, divisor ) {
 		divisor = divisorhalf.concat( divisorslice );
 
 		dividend = dividend.join( "" );
-		divisor = divisor.join( "" );
+		divisor = divisor.join( '' );
 
 		third = mcMulSection( dividend, divisor );
 
-		third = third.split( "" );
+		third = third.split( '' );
 		decimalthirdno = dividendslice.length + divisorslice.length;
-		third.splice( third.length - decimalthirdno, 0, ".");
+		third.splice( third.length - decimalthirdno, 0, '.');
 		while( third[ third.length - 1 ] == 0 )
 			third.pop();
 		if( third[ third.length - 1 ] == "." )

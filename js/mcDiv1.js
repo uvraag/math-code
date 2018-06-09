@@ -6,6 +6,7 @@ function mcDiv1( dividend, divisor ) {
 		remainder,
 		quotient,
 		temp,
+		skip,
 		quotientIndex,
 		dividendIndex, divisorLastIndex,
 		decimaldividend, decimaldivisor, decimalthirdno,
@@ -19,6 +20,7 @@ function mcDiv1( dividend, divisor ) {
 	table = divisor;
 	decimaldividend = false;
 	decimaldivisor = false;
+	skip = false;
 	dividendpos = divisorpos = -1;
 	dividend = String( dividend );
 	divisor = String( divisor );
@@ -73,7 +75,10 @@ function mcDiv1( dividend, divisor ) {
 	if( decimaldividend == false && decimaldivisor == false ){
 		lengthno = dividend.length;
 		for( i = 0; i < lengthno; i++, dividendIndex++ ) {
-			dividendhold = dividend.slice( initial, dividendIndex );
+			if (skip == false) {
+				dividendhold = dividend.slice( initial, dividendIndex );
+			}
+			skip = false;
 			if ( isGte( dividendhold.join(""), divisor.join("") ) ) {
 				if ( isDivisible( dividendhold.join(""), table ) ) {
 						for ( counting = 1; isGte( dividendhold.join(""), table ); counting++ ) {
@@ -103,6 +108,7 @@ function mcDiv1( dividend, divisor ) {
 							lengthno = temp.length;
 							dividendhold =temp.split("");
 							table = divisor.join("");
+							skip = true;
 							$( "#po" ).append("<li>dividendhold=" + dividendhold + "</li>");
 							$( "#po" ).append("<li>quotient=" + quotient + "</li>");
 							$( "#po" ).append("<li>i=" + i + "</li>");
