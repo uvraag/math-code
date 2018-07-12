@@ -1,14 +1,12 @@
-'use strict';
-function isDivisible( dividend, divisor ) {
+function mcRem( dividend, divisor ) {
 	var lengthno,
-		i, j, initial,
+		i, initial,
 		table,
 		counting,
 		remainder,
 		quotient,
-		temp,
 		quotientIndex,
-		dividendIndex, divisorLastIndex,
+		dividendIndex, dividendhold,
 		decimaldividend, decimaldivisor, decimalthirdno,
 		dividendpos, divisorpos,
 		dividendslice, divisorslice,
@@ -23,10 +21,12 @@ function isDivisible( dividend, divisor ) {
 	dividendpos = divisorpos = -1;
 	dividend = String( dividend );
 	divisor = String( divisor );
+	dividend = dividend.replace( /^(\-)?(0+)?(\.?0+?|\.?)$/g, 0 );
 	dividend = dividend.split( "" );
 	divisor = divisor.split( "" );
-	while( Number( dividend[0] )== 0 )
+	while( Number( dividend[0] ) === 0 ) {
 		dividend.shift();
+	}
 	while( Number( divisor[0] )== 0 )
 		divisor.shift();
 
@@ -66,24 +66,36 @@ function isDivisible( dividend, divisor ) {
 			break;
 		}
 	for( i = 0; i < divisor.length; i++ )
-		if( divisor[i] == "." ){
+		if( divisor[i] == "." ) {
 			decimaldivisor = true;
 			divisorpos = i;
 			break;
 		}
-	if( decimaldividend == false && decimaldivisor == false ){
+	if( decimaldividend === false && decimaldivisor === false ){
+		dividendIndex = 1;
 		lengthno = dividend.length;
 		for( i = 0; i < lengthno; i++, dividendIndex++ ) {
-			if ( isGte( dividend.join(""), divisor.join("") ) ) {
-				for ( counting = 1; isGte( dividend.join(""), table ); counting++ ) {
-					table = mcMul( divisor.join(""), counting );
-					if ( isEq( table, dividend.join("") ) ) {
-						return true;
-					}
+			dividendhold = dividend.slice(0, dividendIndex);
+			newDividend : {
+				if ( isGte( dividendhold.join(""), divisor.join("") ) ) {
+					counting = 1;
+					do {
+						if (isGte(mcMul(divisor.join(""), counting + 1), dividendhold)) {
+							table = mcMul( divisor.join(""), counting );
+							dividend.splice(0,table.length, dividendhold - table);
+							dividend = dividend.join("");
+							dividend = dividend.split("");
+							dividendIndex = 0;
+							i = -1;
+							lengthno = dividend.length;
+							break newDividend;
+						}
+						counting++;
+					} while (true);
 				}
 			}
 		}
-		return false;
+		return dividend.join("");
 	} else if( decimaldividend == true || decimaldivisor == true ){
 
 		dividendslice = dividend.slice( dividendpos + 1 );
