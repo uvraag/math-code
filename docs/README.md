@@ -1,3 +1,5 @@
+This repo is not maintained. Go here https://github.com/gauravnumber/math-code
+
 # math-code
 
 ## What is a math-code?
